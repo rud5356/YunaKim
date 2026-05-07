@@ -548,6 +548,55 @@
     color: var(--muted);
   }
 
+  .pub-list {
+    display: grid;
+    gap: 14px;
+  }
+
+  .pub-item {
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  .pub-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: var(--sky);
+    border: 1px solid var(--line-strong);
+    color: var(--blue-deep);
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .pub-item h3 {
+    margin-bottom: 6px;
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .pub-meta {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .pub-doi a {
+    color: var(--blue-deep);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .pub-doi a:hover {
+    text-decoration: underline;
+  }
+
   .letter-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -710,6 +759,8 @@
         <a href="#experience">이력</a>
         <a href="#skills">기술</a>
         <a href="#projects">프로젝트</a>
+        <a href="#awards">수상</a>
+        <a href="#publications">논문</a>
         <a href="#letter">강점</a>
         <a href="#contact">연락처</a>
       </div>
@@ -758,6 +809,7 @@
             <li><span>Email</span><a href="mailto:dbsdk012@gmail.com">dbsdk012@gmail.com</a></li>
             <li><span>Blog</span><a href="https://yuna96.tistory.com" target="_blank" rel="noreferrer">yuna96.tistory.com</a></li>
             <li><span>GitHub</span><a href="https://github.com/rud5356" target="_blank" rel="noreferrer">github.com/rud5356</a></li>
+            <li><span>ORCID</span><a href="https://orcid.org/0009-0000-6379-9460" target="_blank" rel="noreferrer">0009-0000-6379-9460</a></li>
           </ul>
         </aside>
       </div>
@@ -976,6 +1028,23 @@
               <span>소셜 클라우드 환경에서 기계학습 기반의 지역 교통 이벤트 검출 방법 및 장치</span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="shell">
+        <div class="section-head">
+          <span class="section-kicker">Publications</span>
+          <h2>SCI(E) 등재 학술지 논문</h2>
+        </div>
+        <div class="pub-list">
+          <article class="pub-item">
+            <span class="pub-badge">SCIE · Applied Sciences (MDPI)</span>
+            <h3>Regional Traffic Event Detection Using Data Crowdsourcing</h3>
+            <p class="pub-meta"><em>Applied Sciences</em>, 2023, Vol. 13, No. 16, Article 9422</p>
+            <p class="pub-doi"><a href="https://doi.org/10.3390/app13169422" target="_blank" rel="noreferrer">https://doi.org/10.3390/app13169422 ↗</a></p>
+          </article>
         </div>
       </div>
     </section>
