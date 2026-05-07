@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f7187"/>
+      <stop offset="100%" stop-color="#2e89a0"/>
+    </linearGradient>
+  </defs>
+  <!-- background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- left accent block -->
+  <rect x="0" y="0" width="8" height="630" fill="#cdefff" opacity="0.6"/>
+  <!-- decorative circles -->
+  <circle cx="980" cy="100" r="220" fill="white" opacity="0.04"/>
+  <circle cx="1100" cy="500" r="160" fill="white" opacity="0.04"/>
+  <!-- tag chip -->
+  <rect x="100" y="190" width="200" height="40" rx="20" fill="white" opacity="0.15"/>
+  <text x="200" y="216" font-family="Malgun Gothic, sans-serif" font-size="16" font-weight="700" fill="white" text-anchor="middle" letter-spacing="2">DATA SCIENTIST</text>
+  <!-- name -->
+  <text x="100" y="330" font-family="Malgun Gothic, sans-serif" font-size="96" font-weight="800" fill="white">&#xae40;&#xc724;&#xc544;</text>
+  <!-- subtitle -->
+  <text x="100" y="390" font-family="Malgun Gothic, sans-serif" font-size="28" fill="rgba(255,255,255,0.75)">&#ud1b5;&#xacc4;&#xc801; &#xd1b5;&#xcc30;&#xb825;&#xc73c;&#xb85c; &#xac00;&#xce58;&#xb97c; &#xcc3d;&#xcd9c;&#xd558;&#xb294; &#xb370;&#xc774;&#xd130; &#xc0ac;&#xc774;&#xc5b8;&#xd2f0;&#xc2a4;&#xd2b8;</text>
+  <!-- divider -->
+  <rect x="100" y="420" width="60" height="3" fill="rgba(255,255,255,0.4)" rx="2"/>
+  <!-- URL -->
+  <text x="100" y="460" font-family="Malgun Gothic, sans-serif" font-size="22" fill="rgba(255,255,255,0.55)">rud5356.github.io</text>
+</svg>
