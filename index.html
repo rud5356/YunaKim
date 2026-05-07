@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김윤아 | Data Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  :root {
+    --bg: #f4fbff;
+    --paper: #ffffff;
+    --sky: #e8f7ff;
+    --sky-strong: #cdefff;
+    --blue: #2e89a0;
+    --blue-deep: #1f7187;
+    --ink: #152935;
+    --muted: #657482;
+    --line: #d8eaf3;
+    --line-strong: #afd5e4;
+    --shadow: 0 20px 48px rgba(31, 113, 135, 0.12);
+    --sans: "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, p, li {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid rgba(46, 137, 160, 0.35);
+    outline-offset: 3px;
+  }
+
+  .shell {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(16px);
+  }
+
+  .nav {
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    color: var(--blue-deep);
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--sky);
+    border: 1px solid var(--line-strong);
+    color: var(--blue-deep);
+    font-size: 17px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .nav-links a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover { color: var(--blue-deep); }
+
+  .hero-wrap {
+    position: relative;
+    overflow: hidden;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 34%;
+    background: var(--sky);
+  }
+
+  .hero {
+    position: relative;
+    min-height: calc(100vh - 68px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 60px;
+    align-items: center;
+    padding: 72px 0 68px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    color: var(--blue-deep);
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 34px;
+    height: 2px;
+    background: var(--blue);
+  }
+
+  h1, h2, h3, p { margin-top: 0; }
+
+  h1 {
+    margin-bottom: 22px;
+    color: var(--ink);
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  .name-highlight {
+    color: var(--blue);
+  }
+
+  .lead {
+    max-width: 690px;
+    margin-bottom: 0;
+    color: #3f515d;
+    font-size: clamp(17px, 2vw, 20px);
+    font-weight: 400;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 18px;
+    border-radius: 8px;
+    border: 1px solid var(--blue-deep);
+    background: var(--blue-deep);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .btn.secondary {
+    background: var(--paper);
+    color: var(--blue-deep);
+  }
+
+  .snapshot {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 38px;
+  }
+
+  .snapshot div {
+    min-height: 96px;
+    padding: 18px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: #f8fdff;
+  }
+
+  .snapshot strong {
+    display: block;
+    color: var(--blue-deep);
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+  .snapshot span {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .profile-panel {
+    border-radius: 8px;
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: var(--shadow);
+    padding: 28px;
+  }
+
+  .portrait {
+    width: 210px;
+    height: 210px;
+    display: block;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    border: 4px solid var(--blue);
+    object-fit: cover;
+    background: var(--sky);
+  }
+
+  .profile-panel h2 {
+    margin-bottom: 4px;
+    color: var(--ink);
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .profile-panel .role {
+    margin-bottom: 22px;
+    color: var(--blue-deep);
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .info-list {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .info-list li {
+    display: grid;
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 14px;
+  }
+
+  .info-list li:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .info-list span {
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .info-list a {
+    color: var(--blue-deep);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  section {
+    padding: 86px 0;
+  }
+
+  section:nth-of-type(even) {
+    background: var(--paper);
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 42px;
+    align-items: start;
+    margin-bottom: 34px;
+  }
+
+  .section-kicker {
+    color: var(--blue-deep);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin-bottom: 0;
+    color: var(--ink);
+    font-size: clamp(27px, 4vw, 42px);
+    line-height: 1.28;
+    letter-spacing: 0;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
+    gap: 22px;
+    align-items: stretch;
+  }
+
+  .intro-copy {
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  .intro-copy p {
+    margin-bottom: 18px;
+    color: #3d4f5b;
+  }
+
+  .intro-copy p:last-child { margin-bottom: 0; }
+
+  .highlight-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .highlight {
+    padding: 22px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: #f8fdff;
+  }
+
+  .highlight strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--blue-deep);
+    font-size: 18px;
+  }
+
+  .highlight p {
+    margin-bottom: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .timeline {
+    display: grid;
+    gap: 14px;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 26px;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  .timeline-item .time {
+    color: var(--blue-deep);
+    font-weight: 800;
+  }
+
+  .timeline-item h3 {
+    margin-bottom: 7px;
+    color: var(--ink);
+    font-size: 20px;
+  }
+
+  .timeline-item p {
+    margin-bottom: 0;
+    color: var(--muted);
+  }
+
+  .skills-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+    gap: 24px;
+  }
+
+  .skill-bars, .skill-tags {
+    padding: 28px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 118px minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .bar-row:last-child { margin-bottom: 0; }
+
+  .bar-row span {
+    color: var(--ink);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .bar {
+    height: 12px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #dfe8ee;
+  }
+
+  .bar::before {
+    content: "";
+    display: block;
+    width: var(--level);
+    height: 100%;
+    background: var(--blue);
+  }
+
+  .tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: var(--sky);
+    border: 1px solid var(--line-strong);
+    color: var(--blue-deep);
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .project {
+    min-height: 265px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 26px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  .project h3 {
+    margin-bottom: 0;
+    color: var(--ink);
+    font-size: 20px;
+    line-height: 1.35;
+  }
+
+  .project p {
+    margin-bottom: 0;
+    color: var(--muted);
+  }
+
+  .project .tag-group {
+    margin-top: auto;
+  }
+
+  .award-list {
+    display: grid;
+    gap: 14px;
+  }
+
+  .award {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 28px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .award:first-child {
+    border-top: 1px solid var(--line);
+  }
+
+  .award time {
+    color: var(--muted);
+    font-weight: 800;
+  }
+
+  .award strong {
+    display: block;
+    color: var(--ink);
+    font-size: 18px;
+  }
+
+  .award span {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+  }
+
+  .letter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .letter-card {
+    padding: 26px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: #f8fdff;
+  }
+
+  .letter-card h3 {
+    margin-bottom: 12px;
+    color: var(--blue-deep);
+    font-size: 19px;
+  }
+
+  .letter-card p {
+    margin-bottom: 0;
+    color: #3d4f5b;
+    font-size: 15px;
+  }
+
+  .contact-band {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 28px;
+    align-items: center;
+    padding: 34px;
+    border-radius: 8px;
+    background: var(--blue-deep);
+    color: #fff;
+  }
+
+  .contact-band h2 {
+    color: #fff;
+  }
+
+  .contact-band p {
+    margin: 12px 0 0;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .contact-band .btn {
+    border-color: #fff;
+    background: #fff;
+    color: var(--blue-deep);
+  }
+
+  .contact-band .btn.secondary {
+    background: transparent;
+    color: #fff;
+  }
+
+  footer {
+    padding: 34px 0;
+    color: var(--muted);
+    font-size: 13px;
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 900px) {
+    .hero-wrap::before { width: 100%; height: 320px; }
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 34px;
+      padding-top: 46px;
+    }
+    .profile-panel {
+      max-width: 520px;
+    }
+    .snapshot,
+    .intro-grid,
+    .skills-layout,
+    .project-grid,
+    .letter-grid,
+    .contact-band {
+      grid-template-columns: 1fr;
+    }
+    .section-head,
+    .timeline-item,
+    .award {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .contact-actions {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .shell {
+      width: min(100% - 28px, 1120px);
+    }
+    .nav {
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 14px 0;
+    }
+    .nav-links {
+      width: 100%;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    h1 {
+      font-size: 34px;
+    }
+    section {
+      padding: 58px 0;
+    }
+    .hero-actions,
+    .contact-actions {
+      flex-direction: column;
+    }
+    .btn {
+      width: 100%;
+    }
+    .profile-panel,
+    .intro-copy,
+    .highlight,
+    .skill-bars,
+    .skill-tags,
+    .project,
+    .letter-card,
+    .contact-band {
+      padding: 22px;
+    }
+    .portrait {
+      width: 178px;
+      height: 178px;
+    }
+    .info-list li,
+    .bar-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav" aria-label="주요 메뉴">
+      <a class="brand" href="#top" aria-label="김윤아 포트폴리오 홈">
+        <span class="brand-mark">Y</span>
+        <span>김윤아 | Data Scientist</span>
+      </a>
+      <div class="nav-links">
+        <a href="#profile">소개</a>
+        <a href="#experience">이력</a>
+        <a href="#skills">기술</a>
+        <a href="#projects">프로젝트</a>
+        <a href="#letter">강점</a>
+        <a href="#contact">연락처</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero-wrap">
+      <div class="shell hero">
+        <div>
+          <span class="eyebrow">Data Scientist</span>
+          <h1>통계적 통찰력으로 가치를 창출하는 <span class="name-highlight">김윤아</span>입니다</h1>
+          <p class="lead">
+            통계학을 기반으로 데이터 전처리, 모델링, 성능 검증까지 논리적으로 연결합니다.
+            연구실과 산학 프로젝트에서 쌓은 실무형 데이터 경험을 바탕으로 문제를 구조화하고,
+            검증 가능한 분석 결과로 전환하는 데이터 사이언티스트입니다.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#projects">프로젝트 보기</a>
+            <a class="btn secondary" href="https://github.com/rud5356" target="_blank" rel="noreferrer">GitHub 보기</a>
+            <a class="btn secondary" href="mailto:dbsdk012@gmail.com">이메일 보내기</a>
+          </div>
+          <div class="snapshot" aria-label="핵심 역량 요약">
+            <div>
+              <strong>통계학 기반</strong>
+              <span>수치적 원리와 확률적 사고</span>
+            </div>
+            <div>
+              <strong>빅데이터 연구</strong>
+              <span>대학원 연구와 산학 과제 경험</span>
+            </div>
+            <div>
+              <strong>실무형 검증</strong>
+              <span>ETL, 모델링, DB 성능 테스트</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="profile-panel" aria-label="기본정보">
+          <img class="portrait" src="assets/profile.png" alt="김윤아 프로필 사진">
+          <h2>김윤아</h2>
+          <p class="role">데이터사이언티스트</p>
+          <ul class="info-list">
+            <li><span>생년월일</span><strong>1996년 11월 28일</strong></li>
+            <li><span>Phone</span><a href="tel:01037092302">010-3709-2302</a></li>
+            <li><span>Email</span><a href="mailto:dbsdk012@gmail.com">dbsdk012@gmail.com</a></li>
+            <li><span>Blog</span><a href="https://yuna96.tistory.com" target="_blank" rel="noreferrer">yuna96.tistory.com</a></li>
+            <li><span>GitHub</span><a href="https://github.com/rud5356" target="_blank" rel="noreferrer">github.com/rud5356</a></li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+
+    <section id="profile">
+      <div class="shell">
+        <div class="section-head">
+          <span class="section-kicker">Profile</span>
+          <h2>통계적 사고와 최신 IT 기술을 연결합니다</h2>
+        </div>
+        <div class="intro-grid">
+          <div class="intro-copy">
+            <p>
+              청주대학교 통계학과에서 데이터의 근간이 되는 수치적 원리와 확률론적 사고를 학습했고,
+              충북대학교 대학원에서 빅데이터 석·박사 과정을 거치며 데이터 전 영역을 아우르는 전문성을 쌓았습니다.
+            </p>
+            <p>
+              단순히 알고리즘을 적용하는 데 그치지 않고 데이터의 분포와 특성을 해석하며,
+              이를 바탕으로 데이터 전처리부터 모델링, 성능 검증까지 무리 없이 이어지는 분석 파이프라인을 설계합니다.
+            </p>
+            <p>
+              연구실과 산업 현장에서 SANique 솔루션 테스트, ArangoDB 벤치마킹, 실시간 비정형 데이터 분류 등
+              실제 문제를 다루며 신뢰도 높은 결과를 만드는 태도를 길러왔습니다.
+            </p>
+          </div>
+          <div class="highlight-list">
+            <article class="highlight">
+              <strong>문제 정의</strong>
+              <p>복잡한 데이터를 구조화하고 핵심 변수를 찾아 분석 가능한 형태로 정리합니다.</p>
+            </article>
+            <article class="highlight">
+              <strong>성능 검증</strong>
+              <p>데이터 무결성, 백업/복구 시나리오, DB 벤치마킹처럼 재현 가능한 검증을 설계합니다.</p>
+            </article>
+            <article class="highlight">
+              <strong>성실한 기록</strong>
+              <p>기술 스택과 연구 과정을 꾸준히 기록하며 학습을 실무 역량으로 전환합니다.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="shell">
+        <div class="section-head">
+          <span class="section-kicker">Experience</span>
+          <h2>학업과 연구 경험을 데이터 실무 역량으로 확장했습니다</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="time">2022.03 - 2024.02</div>
+            <div>
+              <h3>충북대학교 빅데이터학과 박사 수료</h3>
+              <p>빅데이터 분석, 실시간 데이터 처리, 기계학습 기반 분류와 예측 연구를 수행했습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="time">2020.03 - 2022.02</div>
+            <div>
+              <h3>충북대학교 빅데이터학과 석사 졸업</h3>
+              <p>연구실 프로젝트와 산학 과제를 통해 데이터 전처리, 모델링, 성능 분석 경험을 쌓았습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="time">2015.03 - 2020.02</div>
+            <div>
+              <h3>청주대학교 통계학과 학사 졸업</h3>
+              <p>통계적 추론, 확률, 데이터 분석의 기초를 학습하며 분석 역량의 토대를 다졌습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="time">Research</div>
+            <div>
+              <h3>충북대학교 대학원 빅데이터 연구실 연구원</h3>
+              <p>교수진과 동료의 추천으로 우수학생상을 수상했고, 데이터커맨드 프로젝트와 산업 현장 과제에 참여했습니다.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="shell">
+        <div class="section-head">
+          <span class="section-kicker">Skills</span>
+          <h2>데이터 분석부터 모델링, 시스템 검증까지 다룹니다</h2>
+        </div>
+        <div class="skills-layout">
+          <div class="skill-bars" aria-label="기술 숙련도">
+            <div class="bar-row">
+              <span>Python</span>
+              <div class="bar" style="--level: 90%"></div>
+            </div>
+            <div class="bar-row">
+              <span>Deep Learning</span>
+              <div class="bar" style="--level: 78%"></div>
+            </div>
+            <div class="bar-row">
+              <span>NLP</span>
+              <div class="bar" style="--level: 78%"></div>
+            </div>
+            <div class="bar-row">
+              <span>R</span>
+              <div class="bar" style="--level: 52%"></div>
+            </div>
+            <div class="bar-row">
+              <span>SQL & MongoDB</span>
+              <div class="bar" style="--level: 52%"></div>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <div class="tag-group">
+              <span class="tag">Python</span>
+              <span class="tag">Pytorch</span>
+              <span class="tag">Tensorflow</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">ETL</span>
+              <span class="tag">Linux</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Windows Server</span>
+              <span class="tag">NLP</span>
+              <span class="tag">통계 분석</span>
+              <span class="tag">로그 전처리</span>
+              <span class="tag">데이터 무결성 검사</span>
+              <span class="tag">비정형 데이터 분류</span>
+              <span class="tag">모델 성능 검증</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="shell">
+        <div class="section-head">
+          <span class="section-kicker">Projects</span>
+          <h2>연구와 산업 현장의 문제를 데이터로 풀었습니다</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project">
+            <h3>수소 에너지 농업현장 실증 및 적용 확대</h3>
+            <p>시설, 생육환경, 생육 데이터의 특성을 분석하고 미처리 데이터에 대한 이상 감지 기법을 설계 및 구현했습니다.</p>
+            <div class="tag-group">
+              <span class="tag">ETL</span>
+              <span class="tag">Python</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Linux</span>
+            </div>
+          </article>
+          <article class="project">
+            <h3>Multi-path Data Protection 솔루션 윈도우 환경 테스트</h3>
+            <p>로그 분석을 통해 데이터 무결성을 검증하고 백업/복구 시나리오 테스트를 수행했습니다.</p>
+            <div class="tag-group">
+              <span class="tag">Windows Server</span>
+              <span class="tag">로그 전처리</span>
+              <span class="tag">무결성 검사</span>
+            </div>
+          </article>
+          <article class="project">
+            <h3>YCSB 기반 ArangoDB 성능 벤치마킹 시스템</h3>
+            <p>리눅스 터미널 기반 사용자 입력 제어 프로그램을 구현해 벤치마킹 시나리오별 자동화 동작을 수행했습니다.</p>
+            <div class="tag-group">
+              <span class="tag">Linux</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Benchmark</span>
+            </div>
+          </article>
+          <article class="project">
+            <h3>클라우드 소싱 기반 지역 교통 이벤트 검출 기법</h3>
+            <p>실시간 문자 데이터를 수집하고 교통 유무와 사고 유형을 분류하는 기계학습 기반 시스템을 구현했습니다.</p>
+            <div class="tag-group">
+              <span class="tag">Python</span>
+              <span class="tag">Pytorch</span>
+              <span class="tag">Tensorflow</span>
+              <span class="tag">MongoDB</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="awards">
+      <div class="shell">
+        <div class="section-head">
+          <span class="section-kicker">Awards</span>
+          <h2>수상과 특허로 검증된 연구 성과</h2>
+        </div>
+        <div class="award-list">
+          <div class="award">
+            <time>2024.12</time>
+            <div>
+              <strong>2024 제 11회 전국ICT융합 공모전 특별상</strong>
+              <span>스마트 팜을 위한 작물 생장 예측 모델</span>
+            </div>
+          </div>
+          <div class="award">
+            <time>2023.06</time>
+            <div>
+              <strong>한국콘텐츠학회 우수논문상</strong>
+              <span>클라우드 소싱 및 기계 학습을 활용한 교통 이벤트 검출 기법</span>
+            </div>
+          </div>
+          <div class="award">
+            <time>2022.08</time>
+            <div>
+              <strong>한국콘텐츠학회 우수논문상</strong>
+              <span>농업 데이터의 오류 유형 분석</span>
+            </div>
+          </div>
+          <div class="award">
+            <time>2022.08</time>
+            <div>
+              <strong>충북대학교 산학협력단 특허 출원</strong>
+              <span>소셜 클라우드 환경에서 기계학습 기반의 지역 교통 이벤트 검출 방법 및 장치</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="letter">
+      <div class="shell">
+        <div class="section-head">
+          <span class="section-kicker">Cover Letter</span>
+          <h2>성실함, 정교함, 실행력으로 함께 성장합니다</h2>
+        </div>
+        <div class="letter-grid">
+          <article class="letter-card">
+            <h3>통계적 정교함</h3>
+            <p>
+              데이터를 숫자의 나열로 보지 않고 분포와 맥락을 함께 해석합니다.
+              세부 사항을 놓치지 않는 태도로 분석의 신뢰도를 높입니다.
+            </p>
+          </article>
+          <article class="letter-card">
+            <h3>선제적 실행력</h3>
+            <p>
+              필요한 일이 보이면 먼저 움직이고, 연구실 장비 관리와 환경 정리처럼
+              공동 작업의 기반을 만드는 일에도 책임감을 가지고 참여했습니다.
+            </p>
+          </article>
+          <article class="letter-card">
+            <h3>꾸준한 학습</h3>
+            <p>
+              NLP, 머신러닝, 딥러닝 이론과 실습을 블로그에 기록하며 기술 스택을 확장해왔습니다.
+              입사 후에도 빠르게 배우고 팀에 보탬이 되는 구성원이 되겠습니다.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="shell">
+        <div class="contact-band">
+          <div>
+            <h2>데이터로 문제를 풀 준비가 되어 있습니다</h2>
+            <p>분석, 모델링, 성능 검증이 필요한 곳에서 성실하게 배우고 실행하겠습니다.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="btn" href="mailto:dbsdk012@gmail.com">dbsdk012@gmail.com</a>
+            <a class="btn secondary" href="https://github.com/rud5356" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">© 2026 김윤아. Data Scientist Portfolio.</div>
+  </footer>
+</body>
+</html>
